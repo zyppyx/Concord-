@@ -1,0 +1,66 @@
+<Application
+    x:Class="Concord___Definitive_Edition.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Concord___Definitive_Edition"
+    StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+        <LinearGradientBrush x:Key="ConcordButtonBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Offset="0" Color="#596CEB" />
+            <GradientStop Offset="1" Color="#3822B7" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="ConcordButtonHoverBrush" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Offset="0" Color="#6D7FFF" />
+            <GradientStop Offset="1" Color="#4B31D5" />
+        </LinearGradientBrush>
+
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="44" />
+            <Setter Property="Background" Value="{StaticResource ConcordButtonBrush}" />
+            <Setter Property="Foreground" Value="#F2F0FF" />
+            <Setter Property="BorderBrush" Value="#6F7EFF" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="ButtonBorder"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="7"
+                            SnapsToDevicePixels="True">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.25"
+                                    ShadowDepth="0"
+                                    Color="#251585" />
+                            </Border.Effect>
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Background" Value="{StaticResource ConcordButtonHoverBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.82" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="ButtonBorder" Property="Opacity" Value="0.45" />
+                                <Setter Property="Cursor" Value="Arrow" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

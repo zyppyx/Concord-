@@ -1,0 +1,93 @@
+<UserControl x:Class="Concord___Definitive_Edition.Controls.MessageBubble"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Height="Auto"
+             Width="Auto">
+
+    <Border x:Name="BubbleBorder"
+            Background="#5865F2"
+            CornerRadius="18"
+            Padding="15"
+            Margin="0,0,0,15"
+            HorizontalAlignment="Right"
+            MaxWidth="400"
+            Cursor="Hand"
+            RenderTransformOrigin="0.5,0.5">
+
+        <Border.RenderTransform>
+            <ScaleTransform ScaleX="1" ScaleY="1"/>
+        </Border.RenderTransform>
+
+        <Border.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                         To="1.03" Duration="0:0:0.15"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                         To="1.03" Duration="0:0:0.15"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                         To="1" Duration="0:0:0.15"/>
+                        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                         To="1" Duration="0:0:0.15"/>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                         To="0.93" Duration="0:0:0.15"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Border.Triggers>
+
+        <StackPanel>
+            <!-- Texto ou "mensagem apagada" -->
+            <TextBlock x:Name="MessageText"
+                       Text="{Binding Message, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                       Foreground="White"
+                       FontSize="16"
+                       TextWrapping="Wrap"/>
+
+            <!-- Imagem (quando for mídia de imagem) -->
+            <Image x:Name="MediaImage"
+                   MaxWidth="320"
+                   MaxHeight="280"
+                   Margin="0,6,0,0"
+                   Stretch="Uniform"
+                   Visibility="Collapsed"
+                   Cursor="Hand"/>
+
+            <!-- Nome do arquivo (para arquivos não-imagem) -->
+            <Border x:Name="FileBorder"
+                    Background="#00000030"
+                    CornerRadius="8"
+                    Padding="10,6"
+                    Margin="0,6,0,0"
+                    Visibility="Collapsed"
+                    Cursor="Hand">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="📎"
+                               FontSize="18"
+                               VerticalAlignment="Center"
+                               Margin="0,0,8,0"/>
+                    <TextBlock x:Name="FileNameText"
+                               Foreground="#DDFFFFFF"
+                               FontSize="13"
+                               VerticalAlignment="Center"
+                               TextTrimming="CharacterEllipsis"
+                               MaxWidth="240"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Hora -->
+            <TextBlock Text="{Binding Time, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                       Foreground="#AAFFFFFF"
+                       FontSize="11"
+                       HorizontalAlignment="Right"
+                       Margin="0,4,0,0"/>
+        </StackPanel>
+    </Border>
+</UserControl>

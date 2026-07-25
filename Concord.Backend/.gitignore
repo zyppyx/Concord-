@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+*.user
+
+chat.db
+chat.db-shm
+chat.db-wal

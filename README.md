@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Assets/Concord_logo.svg" alt="Logo do Concord" width="180" />
+<img src="Assets/Concord_icon.svg" alt="Logo do Concord" width="180" />
 
 # Concord
 

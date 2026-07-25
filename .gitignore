@@ -1,0 +1,27 @@
+# ===== .NET (backend + desktop) =====
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.pdb
+appsettings.Development.json
+appsettings.Local.json
+
+# ===== Android / Gradle =====
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+
+# ===== Geral =====
+*.log
+*.tmp
+.env
